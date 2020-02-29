@@ -2,6 +2,7 @@ package com.testinium.bookStore.rest;
 
 import com.testinium.bookStore.dto.CategoryDTO;
 import com.testinium.bookStore.service.impl.CategoryServiceImpl;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,11 +20,13 @@ public class CategoryRest {
     }
 
     @PostMapping
+    @Operation(summary = "Create a Category")
     public ResponseEntity<CategoryDTO> createCategory(@Valid @RequestBody CategoryDTO categoryDTO) {
         return ResponseEntity.ok(categoryService.save(categoryDTO));
     }
 
     @GetMapping
+    @Operation(summary = "Get All Categories")
     public ResponseEntity<List<CategoryDTO>> getAll() {
         return ResponseEntity.ok(categoryService.getAll());
     }
