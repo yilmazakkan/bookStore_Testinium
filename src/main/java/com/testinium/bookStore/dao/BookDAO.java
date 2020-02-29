@@ -14,6 +14,7 @@ public interface BookDAO extends JpaRepository<Book,Long> {
     List<Book> findAll(Sort sort);
     Book getById(Long id);
     Book getByBookCode(String bookCode);
+    Book getByPrice(Double price);
 
     @Query(value = "SELECT b from Book b where b.category.id =: id")
     List<Book> queryByCategory(@Param("id") Long id);
