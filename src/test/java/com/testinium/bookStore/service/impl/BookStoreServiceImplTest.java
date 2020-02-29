@@ -1,8 +1,15 @@
 package com.testinium.bookStore.service.impl;
 
+import com.testinium.bookStore.dao.BookAndBookStoreDAO;
+import com.testinium.bookStore.dao.BookDAO;
+import com.testinium.bookStore.dao.BookStoreDAO;
 import com.testinium.bookStore.dao.CategoryDAO;
+import com.testinium.bookStore.dto.BookDTO;
 import com.testinium.bookStore.dto.BookStoreDTO;
 import com.testinium.bookStore.dto.CategoryDTO;
+import com.testinium.bookStore.entity.Book;
+import com.testinium.bookStore.entity.BookAndBookStore;
+import com.testinium.bookStore.entity.BookStore;
 import com.testinium.bookStore.entity.Category;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,6 +17,10 @@ import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
@@ -20,9 +31,20 @@ class BookStoreServiceImplTest {
 
     @InjectMocks
     private CategoryServiceImpl categoryService;
+    @InjectMocks
+    private BookServiceImpl bookService;
 
+    @InjectMocks
+    private BookStoreServiceImpl bookStoreService;
+
+    private  BookDAO bookDAO;
+    @Mock
+    private  BookStoreDAO bookStoreDAO;
+    @Mock
+    private  BookAndBookStoreDAO bookAndBookStoreDAO;
     @Mock
     private  CategoryDAO categoryDAO;
+
 
     @Test
    public void TestCategorySave() {
@@ -39,16 +61,34 @@ class BookStoreServiceImplTest {
         assertEquals(result.getId(),1L);
     }
 
+
     @Test
-    void getAll() {
+    void TestGetAllCategory() {
+            Category category = new Category();
+            category.setId(1L);
+            category.setCategoryName("Test-Name");
+            when(categoryDAO.findAll()).thenReturn(Collections.singletonList(category));
+            List<CategoryDTO> categoryDTOS = categoryService.getAll();
+            assertEquals(categoryDTOS.size(),1);
+
     }
 
     @Test
     public void TestBookStoreSave() {
         BookStoreDTO bookStoreDTO = new BookStoreDTO();
+        BookStore bookStoreMock = mock(BookStore.class);
+
         bookStoreDTO.setBookStoreName("Test-Name");
         bookStoreDTO.setCity("Test-City");
+        when(bookStoreMock.getId()).thenReturn(1L);
+        when(bookStoreDAO.save(ArgumentMatchers.any(BookStore.class))).thenReturn(bookStoreMock);
+        BookStoreDTO result = bookStoreService.save(bookStoreDTO);
+
+        assertEquals(result.getBookStoreName(),bookStoreDTO.getBookStoreName());
+        assertEquals(result.getId(),1L);
 
     }
+
+
 
 }

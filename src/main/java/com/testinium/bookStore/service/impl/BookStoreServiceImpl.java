@@ -33,8 +33,8 @@ public class BookStoreServiceImpl implements BookStoreService {
         BookStore bookStore = new BookStore();
         bookStore.setBookStoreName(bookStoreDTO.getBookStoreName());
         bookStore.setCity(bookStoreDTO.getCity());
-        bookStoreDAO.save(bookStore);
-        bookStoreDTO.setId(bookStore.getId());
+        BookStore bookStoreDb = bookStoreDAO.save(bookStore);
+        bookStoreDTO.setId(bookStoreDb.getId());
         return bookStoreDTO;
     }
 

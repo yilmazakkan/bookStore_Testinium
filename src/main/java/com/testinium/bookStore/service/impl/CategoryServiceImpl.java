@@ -24,8 +24,8 @@ private final CategoryDAO categoryDAO;
     public CategoryDTO save(CategoryDTO categoryDTO) {
         Category category = new Category();
         category.setCategoryName(categoryDTO.getCategoryName());
-        categoryDAO.save(category);
-        categoryDTO.setId(category.getId());
+      Category categoryDb =  categoryDAO.save(category);
+        categoryDTO.setId(categoryDb.getId());
         return  categoryDTO;
     }
 
