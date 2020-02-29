@@ -2,10 +2,17 @@ package com.testinium.bookStore.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode(of = {"id"})
+@ToString
 @Entity
 public class BookAndBookStore implements Serializable {
 
@@ -26,8 +33,7 @@ public class BookAndBookStore implements Serializable {
     @Column(name = "book_price")
     private Double bookPrice;
 
-    public BookAndBookStore() {
-    }
+
 
     public BookAndBookStore(Book book, BookStore bookStore, Double bookPrice) {
         this.book = book;
@@ -35,35 +41,4 @@ public class BookAndBookStore implements Serializable {
         this.bookPrice = bookPrice;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Book getBook() {
-        return book;
-    }
-
-    public void setBook(Book book) {
-        this.book = book;
-    }
-
-    public BookStore getBookStore() {
-        return bookStore;
-    }
-
-    public void setBookStore(BookStore bookStore) {
-        this.bookStore = bookStore;
-    }
-
-    public Double getBookPrice() {
-        return bookPrice;
-    }
-
-    public void setBookPrice(Double bookPrice) {
-        this.bookPrice = bookPrice;
-    }
 }
