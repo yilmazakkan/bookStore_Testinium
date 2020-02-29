@@ -73,6 +73,7 @@ class BookStoreServiceImplTest {
 
     }
 
+
     @Test
     public void TestBookStoreSave() {
         BookStoreDTO bookStoreDTO = new BookStoreDTO();
@@ -89,6 +90,22 @@ class BookStoreServiceImplTest {
 
     }
 
+    @Test
+    public void TestGetAllookStore() {
+        BookStore bookStore = new BookStore();
+        Book book = new Book();
+        bookStore.setBookStoreName("Test-Name");
+        bookStore.setCity("Test-City");
+        BookAndBookStore bookAndBookStore = new BookAndBookStore();
+        bookAndBookStore.setBook(book);
+        bookStore.setBookAndBookStores(Collections.singletonList(bookAndBookStore));
+
+        when(bookStoreDAO.findAll()).thenReturn(Collections.singletonList(bookStore));
+        List<BookStoreDTO> bookStoreDTOS = bookStoreService.getAll();
+
+        assertEquals(bookStoreDTOS.size(),1);
+
+    }
 
 
 }
