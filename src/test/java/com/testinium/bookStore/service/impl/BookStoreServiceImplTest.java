@@ -62,16 +62,16 @@ class BookStoreServiceImplTest {
     }
 
 
-    @Test
-    void TestGetAllCategory() {
-            Category category = new Category();
-            category.setId(1L);
-            category.setCategoryName("Test-Name");
-            when(categoryDAO.findAll()).thenReturn(Collections.singletonList(category));
-            List<CategoryDTO> categoryDTOS = categoryService.getAll();
-            assertEquals(categoryDTOS.size(),1);
-
-    }
+//    @Test
+//    void TestGetAllCategory() {
+//            Category category = new Category();
+//            category.setId(1L);
+//            category.setCategoryName("Test-Name");
+//            when(categoryDAO.findAll()).thenReturn(Collections.singletonList(category));
+//            List<CategoryDTO> categoryDTOS = categoryService.getAll();
+//            assertEquals(categoryDTOS.size(),1);
+//
+//    }
 
 
     @Test

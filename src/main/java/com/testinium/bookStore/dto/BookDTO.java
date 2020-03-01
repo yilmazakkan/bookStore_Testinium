@@ -21,10 +21,14 @@ public class BookDTO {
     private Double price;
     @NotNull(message = "Book Code Cannot be Empty ")
     private String bookCode;
-    private CategoryDTO category;
     @NotNull(message = "category Cannot be Empty ")
-    private Long categoryId;
+    private CategoryDTO category;
     private List<BookAndBookStoreDTO> bookAndBookStores;
 
-
+    public BookDTO(Long id, String bookName, @NotNull(message = "Book price Cannot be Empty ") Double price, @NotNull(message = "Book Code Cannot be Empty ") String bookCode) {
+        this.id = id;
+        this.bookName = bookName;
+        this.price = price;
+        this.bookCode = bookCode;
+    }
 }

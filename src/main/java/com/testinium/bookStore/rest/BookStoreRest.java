@@ -47,8 +47,11 @@ public class BookStoreRest {
     @DeleteMapping("/book/{id}")
     @Operation(summary = "Delete Book from BookStore")
     public ResponseEntity<Boolean> delete(@PathVariable(value = "id", required = true) Long id){
-        log.info("BookStore API-> Delete Book from BookStore");
-        log.debug("BookStore API-> BookID -> PARAM: " +id);
-        return ResponseEntity.ok(bookStoreService.deleteBookFromBookStore(id));
+
+          log.info("BookStore API-> Delete Book from BookStore");
+          log.debug("BookStore API-> BookID -> PARAM: " + id);
+          return ResponseEntity.ok(bookStoreService.deleteBookFromBookStore(id));
+
+
     }
 }

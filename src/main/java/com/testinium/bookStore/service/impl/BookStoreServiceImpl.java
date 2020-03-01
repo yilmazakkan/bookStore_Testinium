@@ -71,14 +71,6 @@ public class BookStoreServiceImpl implements BookStoreService {
             bookStoreDTO.setId(item.getId());
             bookStoreDTO.setBookStoreName(item.getBookStoreName());
 
-//            List<BookAndBookStoreDTO> bookAndBookStores = new ArrayList<>();
-//            item.getBookAndBookStores().forEach(bookAndBookStore -> {
-//
-//                BookDTO bookDTO = new BookDTO(bookAndBookStore.getBook().getId(), bookAndBookStore.getBook().getBookName(), bookAndBookStore.getBook().getPrice(), bookAndBookStore.getBook().getBookCode());
-//                BookAndBookStoreDTO bookAndBookStoreDTO = new BookAndBookStoreDTO(bookAndBookStore.getId(), bookDTO, bookAndBookStore.getBook().getId(), null, bookAndBookStore.getBookStore().getId(), bookAndBookStore.getBookPrice());
-//                bookAndBookStores.add(bookAndBookStoreDTO);
-//            });
-//            bookStoreDTO.getBookAndBookStores().addAll(bookAndBookStores);
             bookStoreDTO.setCity(item.getCity());
             bookStoreDTOS.add(bookStoreDTO);
         });

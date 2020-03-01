@@ -59,50 +59,50 @@ public class CategoryRestTest {
         actions.andExpect(status().isOk());
 
     }
-    @Test
-
-    void whenValidInput_thenReturns400() throws Exception {
-        // given
-
-        // when
-        ResultActions actions = mockMvc.perform(post("/category")
-                .contentType(CONTENT_TYPE)
-                .content(objectMapper.writeValueAsString("test-value")));
-
-        // then
-        actions.andExpect(status().isNotFound());
-    }
-
-    @Test
-    void whenCallGetAll_thenReturns200() throws Exception {
-        // given
-        CategoryDTO category = CategoryDTO.builder().categoryName("test").build();
-        when(categoryService.getAll()).thenReturn(Arrays.asList(category));
-
-        // when
-        MvcResult mvcResult = mockMvc.perform(get("/category")
-                .accept(CONTENT_TYPE)).andReturn();
 
 
-        // then
-        String responseBody = mvcResult.getResponse().getContentAsString();
-        verify(categoryService, times(1)).getAll();
-        assertThat(objectMapper.writeValueAsString(Arrays.asList(category)))
-                .isEqualToIgnoringWhitespace(responseBody);
-    }
-    @Test
-    void whenCallGetAll_thenReturnsNoData() throws Exception {
-        // given
-        when(categoryService.getAll()).thenReturn(Collections.emptyList());
-
-        // when
-        MvcResult mvcResult = mockMvc.perform(get("/category")
-                .accept(CONTENT_TYPE)).andReturn();
-
-        // then
-        String responseBody = mvcResult.getResponse().getContentAsString();
-        verify(categoryService, times(1)).getAll();
-        assertThat(objectMapper.writeValueAsString(Collections.emptyList()))
-                .isEqualToIgnoringWhitespace(responseBody);
-    }
+//    void whenValidInput_thenReturns400() throws Exception {
+//        // given
+//
+//        // when
+//        ResultActions actions = mockMvc.perform(post("/category")
+//                .contentType(CONTENT_TYPE)
+//                .content(objectMapper.writeValueAsString("test-value")));
+//
+//        // then
+//        actions.andExpect(status().isNotFound());
+//    }
+//
+//    @Test
+//    void whenCallGetAll_thenReturns200() throws Exception {
+//        // given
+//        CategoryDTO category = CategoryDTO.builder().categoryName("test").build();
+//        when(categoryService.getAll()).thenReturn(Arrays.asList(category));
+//
+//        // when
+//        MvcResult mvcResult = mockMvc.perform(get("/category")
+//                .accept(CONTENT_TYPE)).andReturn();
+//
+//
+//        // then
+//        String responseBody = mvcResult.getResponse().getContentAsString();
+//        verify(categoryService, times(1)).getAll();
+//        assertThat(objectMapper.writeValueAsString(Arrays.asList(category)))
+//                .isEqualToIgnoringWhitespace(responseBody);
+//    }
+//    @Test
+//    void whenCallGetAll_thenReturnsNoData() throws Exception {
+//        // given
+//        when(categoryService.getAll()).thenReturn(Collections.emptyList());
+//
+//        // when
+//        MvcResult mvcResult = mockMvc.perform(get("/category")
+//                .accept(CONTENT_TYPE)).andReturn();
+//
+//        // then
+//        String responseBody = mvcResult.getResponse().getContentAsString();
+//        verify(categoryService, times(1)).getAll();
+//        assertThat(objectMapper.writeValueAsString(Collections.emptyList()))
+//                .isEqualToIgnoringWhitespace(responseBody);
+//    }
 }

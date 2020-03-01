@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Arrays;
 import java.util.List;
 
 @AllArgsConstructor
@@ -23,9 +24,11 @@ public class Category {
     @Column(name = "category_name")
     private String categoryName;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<Book> books;
+
+
+//    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+//    @JsonIgnore
+//    private List<Book> books;
 
 
 }

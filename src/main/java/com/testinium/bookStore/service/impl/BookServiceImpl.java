@@ -38,7 +38,7 @@ public class BookServiceImpl implements BookService {
     public BookDTO save(BookDTO bookDTO) {
 
         Book book = new Book();
-        Category category = categoryDAO.getById(bookDTO.getCategoryId());
+        Category category = categoryDAO.getById(bookDTO.getCategory().getId());
         Book bookCodeCheck = bookDAO.getByBookCode(bookDTO.getBookCode());
         book.setBookName(bookDTO.getBookName());
         if (bookCodeCheck != null) {
@@ -46,7 +46,7 @@ public class BookServiceImpl implements BookService {
         }
         book.setBookCode(bookDTO.getBookCode());
         book.setCategory(category);
-        if (category == null){
+        if (category == null) {
             throw new IllegalArgumentException("This category does not exist. You must enter an existing category id");
         }
         book.setPrice(bookDTO.getPrice());
@@ -71,19 +71,32 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public BookDTO updateCategory(Long id, BookDTO bookDTO) {
+        try {
+            Book bookDb = bookDAO.getById(id);
+            if (bookDb == null)
+                throw new IllegalArgumentException("Book Does Not Exist ID: " + id);
 
-        Book bookDb = bookDAO.getById(id);
-        if (bookDb == null)
+            Category category = categoryDAO.getById(bookDTO.getCategory().getId());
+            bookDb.setCategory(category);
+            bookDb.setPrice(bookDTO.getPrice());
+            bookDb.setBookCode(bookDTO.getBookCode());
+
+            bookDAO.save(bookDb);
+            bookDTO.setId(bookDb.getId());
+            return bookDTO;
+        } catch (Exception e) {
             throw new IllegalArgumentException("Book Does Not Exist ID: " + id);
+        }
 
-        Category category = categoryDAO.getById(bookDTO.getCategoryId());
-        bookDb.setCategory(category);
-        bookDb.setPrice(bookDTO.getPrice());
-        bookDb.setBookCode(bookDTO.getBookCode());
+    }
 
-        bookDAO.save(bookDb);
-        bookDTO.setId(bookDb.getId());
-        return bookDTO;
+    public List<BookDTO> getByCategory(Long categoryId) {
+        List<Book> books = bookDAO.getBookByCategory_Id(categoryId);
+        List<BookDTO> bookDTOS = new ArrayList<>();
+        books.forEach(item -> {
+            bookDTOS.add(convertBookToBookDTO(item));
+        });
+        return bookDTOS;
 
     }
 
@@ -106,7 +119,7 @@ public class BookServiceImpl implements BookService {
         bookDto.setBookName(item.getBookName());
         bookDto.setBookCode(item.getBookCode());
         bookDto.setPrice(item.getPrice());
-        bookDto.setCategory(new CategoryDTO(item.getCategory().getId(), item.getCategory().getCategoryName(), null));
+        bookDto.setCategory(new CategoryDTO(item.getCategory().getId(), item.getCategory().getCategoryName()));
         List<BookAndBookStoreDTO> bookAndBookStoreDTOS = new ArrayList<>();
         item.getBookAndBookStores().forEach(bookAndBookStore -> {
             BookStoreDTO bookStoreDTO = new BookStoreDTO(bookAndBookStore.getBookStore().getId(), bookAndBookStore.getBookStore().getBookStoreName(), bookAndBookStore.getBookStore().getCity(), null);
