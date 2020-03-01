@@ -127,26 +127,5 @@ class BookStoreServiceImplTest {
 
     }
 
-    @Test
-    public void TestBookEquals() {
-        BookStore bookStore = new BookStore();
-        Category category = new Category();
-        Book book = new Book();
-        book.setId(1L);
-        book.setBookName("Test-Name");
-        book.setPrice(100.000);
-        book.setBookCode("test-code");
-        book.setCategory("test-category");
-        BookAndBookStore bookAndBookStore = new BookAndBookStore();
-        bookAndBookStore.setBook(book);
-        bookStore.setBookAndBookStores(Collections.singletonList(bookAndBookStore));
-
-        when(bookStoreDAO.findAll()).thenReturn(Collections.singletonList(bookStore));
-        List<BookStoreDTO> bookStoreDTOS = bookStoreService.getAll();
-
-
-        assertEquals(bookStoreDTOS.get(0), BookStoreDTO.builder().id(1L).build());
-
-    }
 
 }

@@ -1,7 +1,6 @@
 package com.testinium.bookStore.dao;
 
 
-import com.testinium.bookStore.entity.Book;
 import com.testinium.bookStore.entity.BookStore;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,6 +12,7 @@ import java.util.List;
 public interface BookStoreDAO extends JpaRepository<BookStore,Long> {
     List<BookStore> findAll(Sort sort);
     BookStore getByCity(String city);
+    BookStore getByBookStoreName(String StoreName);
     BookStore getById(Long id);
 
 

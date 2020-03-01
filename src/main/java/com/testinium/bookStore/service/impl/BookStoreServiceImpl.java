@@ -31,6 +31,11 @@ public class BookStoreServiceImpl implements BookStoreService {
     @Override
     public BookStoreDTO save(BookStoreDTO bookStoreDTO) {
         BookStore bookStore = new BookStore();
+        BookStore cityCheck = bookStoreDAO.getByCity(bookStoreDTO.getCity());
+        BookStore bookStoreCheck = bookStoreDAO.getByBookStoreName(bookStoreDTO.getBookStoreName());
+        if (cityCheck != null && bookStoreCheck != null) {
+            throw new IllegalArgumentException("This Book Store Already Exists in This City, You need to change the Bookstore name or city !!!");
+        }
         bookStore.setBookStoreName(bookStoreDTO.getBookStoreName());
         bookStore.setCity(bookStoreDTO.getCity());
         BookStore bookStoreDb = bookStoreDAO.save(bookStore);

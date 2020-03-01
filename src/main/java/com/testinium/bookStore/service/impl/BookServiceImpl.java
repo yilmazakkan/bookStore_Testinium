@@ -71,6 +71,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public BookDTO updateCategory(Long id, BookDTO bookDTO) {
+
         Book bookDb = bookDAO.getById(id);
         if (bookDb == null)
             throw new IllegalArgumentException("Book Does Not Exist ID: " + id);
@@ -83,7 +84,6 @@ public class BookServiceImpl implements BookService {
         bookDAO.save(bookDb);
         bookDTO.setId(bookDb.getId());
         return bookDTO;
-
 
     }
 
