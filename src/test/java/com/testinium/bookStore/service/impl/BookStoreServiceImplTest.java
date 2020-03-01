@@ -88,12 +88,14 @@ class BookStoreServiceImplTest {
         assertEquals(result.getBookStoreName(),bookStoreDTO.getBookStoreName());
         assertEquals(result.getId(),1L);
 
+
     }
 
     @Test
-    public void TestGetAllookStore() {
+    public void TestGetAllBookStore() {
         BookStore bookStore = new BookStore();
         Book book = new Book();
+        bookStore.setId(1L);
         bookStore.setBookStoreName("Test-Name");
         bookStore.setCity("Test-City");
         BookAndBookStore bookAndBookStore = new BookAndBookStore();
@@ -106,6 +108,45 @@ class BookStoreServiceImplTest {
         assertEquals(bookStoreDTOS.size(),1);
 
     }
+    @Test
+    public void TestBookStoresEquals() {
+        BookStore bookStore = new BookStore();
+        Book book = new Book();
+        bookStore.setId(1L);
+        bookStore.setBookStoreName("Test-Name");
+        bookStore.setCity("Test-City");
+        BookAndBookStore bookAndBookStore = new BookAndBookStore();
+        bookAndBookStore.setBook(book);
+        bookStore.setBookAndBookStores(Collections.singletonList(bookAndBookStore));
 
+        when(bookStoreDAO.findAll()).thenReturn(Collections.singletonList(bookStore));
+        List<BookStoreDTO> bookStoreDTOS = bookStoreService.getAll();
+
+
+        assertEquals(bookStoreDTOS.get(0), BookStoreDTO.builder().id(1L).build());
+
+    }
+
+    @Test
+    public void TestBookEquals() {
+        BookStore bookStore = new BookStore();
+        Category category = new Category();
+        Book book = new Book();
+        book.setId(1L);
+        book.setBookName("Test-Name");
+        book.setPrice(100.000);
+        book.setBookCode("test-code");
+        book.setCategory("test-category");
+        BookAndBookStore bookAndBookStore = new BookAndBookStore();
+        bookAndBookStore.setBook(book);
+        bookStore.setBookAndBookStores(Collections.singletonList(bookAndBookStore));
+
+        when(bookStoreDAO.findAll()).thenReturn(Collections.singletonList(bookStore));
+        List<BookStoreDTO> bookStoreDTOS = bookStoreService.getAll();
+
+
+        assertEquals(bookStoreDTOS.get(0), BookStoreDTO.builder().id(1L).build());
+
+    }
 
 }

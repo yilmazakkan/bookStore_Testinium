@@ -27,8 +27,8 @@ public class BookRest {
     @Operation(summary = "Create a Book")
     public ResponseEntity<BookDTO> addBook(@Valid @RequestBody BookDTO bookDTO) {
         log.info("Book API-> Post");
-        BookDTO response = bookService.save(bookDTO);
 
+        BookDTO response = bookService.save(bookDTO);
         return ResponseEntity.ok(response);
     }
 

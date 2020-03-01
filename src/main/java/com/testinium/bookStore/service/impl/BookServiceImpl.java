@@ -77,6 +77,9 @@ public class BookServiceImpl implements BookService {
 
         Category category = categoryDAO.getById(bookDTO.getCategoryId());
         bookDb.setCategory(category);
+        bookDb.setPrice(bookDTO.getPrice());
+        bookDb.setBookCode(bookDTO.getBookCode());
+
         bookDAO.save(bookDb);
         bookDTO.setId(bookDb.getId());
         return bookDTO;

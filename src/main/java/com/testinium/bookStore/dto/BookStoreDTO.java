@@ -2,16 +2,14 @@ package com.testinium.bookStore.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(of = {"id"})
 @Builder
 @Schema(name = "BookStore Data Transfer Object")
 @JsonInclude(JsonInclude.Include.NON_NULL)
