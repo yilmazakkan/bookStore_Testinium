@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
@@ -16,7 +17,9 @@ import java.util.List;
 public class BookStoreDTO {
 
     private Long id;
+    @NotNull(message = "BookStore Name Cannot be Empty ")
     private String bookStoreName;
+    @NotNull(message = "City Name Cannot be Empty ")
     private String city;
     private List<BookAndBookStoreDTO> bookAndBookStores;
     private List<String> bookAndStore;
