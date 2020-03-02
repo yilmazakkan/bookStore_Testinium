@@ -63,10 +63,10 @@ public class BookStoreServiceImpl implements BookStoreService {
 
     @Override
     public List<BookStoreDTO> getAll() {
-        List<BookStore> bookStores= bookStoreDAO.findAll();
+        List<BookStore> bookStores = bookStoreDAO.findAll();
         List<BookStoreDTO> bookStoreDTOS = new ArrayList<>();
 
-        bookStores.forEach(item ->{
+        bookStores.forEach(item -> {
             BookStoreDTO bookStoreDTO = new BookStoreDTO();
             bookStoreDTO.setId(item.getId());
             bookStoreDTO.setBookStoreName(item.getBookStoreName());

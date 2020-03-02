@@ -17,10 +17,8 @@ public class BookAndBookStoreDTO {
     private Long id;
     private BookDTO book;
     private Long bookId;
-
     private BookStoreDTO bookStore;
     private Long bookStoredId;
-
     private Double bookPrice;
 
 }

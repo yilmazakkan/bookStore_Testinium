@@ -29,5 +29,4 @@ public class BookStore {
     private List<BookAndBookStore> bookAndBookStores;
 
 
-
 }

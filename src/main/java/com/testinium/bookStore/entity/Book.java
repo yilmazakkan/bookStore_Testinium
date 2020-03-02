@@ -40,5 +40,4 @@ public class Book {
     private List<BookAndBookStore> bookAndBookStores = new ArrayList<>();
 
 
-
 }

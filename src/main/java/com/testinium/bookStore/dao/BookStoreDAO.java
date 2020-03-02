@@ -9,11 +9,13 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface BookStoreDAO extends JpaRepository<BookStore,Long> {
+public interface BookStoreDAO extends JpaRepository<BookStore, Long> {
     List<BookStore> findAll(Sort sort);
-    BookStore getByCity(String city);
-    BookStore getByBookStoreName(String StoreName);
-    BookStore getById(Long id);
 
+    BookStore getByCity(String city);
+
+    BookStore getByBookStoreName(String StoreName);
+
+    BookStore getById(Long id);
 
 }

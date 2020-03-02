@@ -7,7 +7,10 @@ import java.util.List;
 
 public interface BookStoreService {
     BookStoreDTO save(BookStoreDTO bookStoreDTO);
+
     List<BookStoreDTO> getAll();
+
     Boolean deleteBookFromBookStore(Long id);
+
     BookAndBookStoreDTO addBookToBookStore(BookAndBookStoreDTO bookAndBookStoreDTO);
 }

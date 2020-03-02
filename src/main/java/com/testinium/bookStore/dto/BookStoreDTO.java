@@ -22,7 +22,6 @@ public class BookStoreDTO {
     private List<String> bookAndStore;
 
 
-
     public BookStoreDTO(Long id, String bookStoreName, String city, List<BookAndBookStoreDTO> bookAndBookStores) {
         this.id = id;
         this.bookStoreName = bookStoreName;

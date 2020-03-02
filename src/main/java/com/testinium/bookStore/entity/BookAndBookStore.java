@@ -34,7 +34,6 @@ public class BookAndBookStore implements Serializable {
     private Double bookPrice;
 
 
-
     public BookAndBookStore(Book book, BookStore bookStore, Double bookPrice) {
         this.book = book;
         this.bookStore = bookStore;
