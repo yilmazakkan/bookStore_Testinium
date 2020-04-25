@@ -1,0 +1,328 @@
+{
+	"info": {
+		"_postman_id": "2c941e51-c13b-44f0-80e1-49fd6eb73d21",
+		"name": "BookStore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "GetAll book",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8090/book",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Books by Category ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8090/book/category/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"book",
+								"category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create book",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n    \n        \"bookName\": \"Deneme\",\n        \"price\": \"20.000\",\n        \"bookCode\": \"2133212\",\n\t\t \"category\": {\n            \"id\": 2\n        },\n         \"bookAndBookStores\": [\t]\n        \n        \n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8090/book",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add book To BookStore",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "     {\r\n          \r\n              \"bookId\": 3,\r\n              \"bookStoredId\": 3,\r\n              \"bookPrice\": \"200.800\"\r\n          \r\n      }\r\n ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8090/bookstore/addbook",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"bookstore",
+								"addbook"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create New Book And Add To BookStores",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n    \n     \n     \n        \"bookName\": \"Java tutorial\",\n        \"price\": \"99.99\",\n        \"bookCode\": \"JVM800\",\n       \"category\": {\n            \"id\": 8\n           \n        },\n        \n        \"bookAndBookStores\": [\n        \t{\n        \t\t \"bookId\": 1,\n              \"bookStoredId\": 2,\n              \"bookPrice\": \"120.500\"\n        \t},\n        \t\t{\n        \t\t \"bookId\": 1,\n              \"bookStoredId\": 1,\n              \"bookPrice\": \"150.500\"\n        \t}\n        \t]\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8090/book",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "BookStore",
+			"item": [
+				{
+					"name": "GetAll Bookstore",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8090/bookstore",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"bookstore"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete book From BookStore",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8090/bookstore/book/13",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"bookstore",
+								"book",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create bookstore",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"bookStoreName\": \"Eylul Kitapevi\",\r\n        \"city\": \"izmir\"\r\n  \r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8090/bookstore",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"bookstore"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "GetAll Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8090/category",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"categoryName\": \"as\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8090/category",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category From Book",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n      \"category\": {\n            \"id\": 2\n        }\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8090/book/12",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"book",
+								"12"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
